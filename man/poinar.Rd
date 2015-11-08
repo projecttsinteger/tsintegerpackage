@@ -21,12 +21,13 @@ Fit in inar model to a univariate time series by yule-walker method
 }
 \examples{
 data(claims)
-mean(claims[,5])
-var(claims[,5])
-var(claims[,5])/mean(claims[,5])  # dispersion index
-acf(claims[,5])
-pacf(claims[,5])
-poinar(claims[,5], 1)
+attach(claims)
+mean(claims5)
+var(claims5)
+var(claims5)/mean(claims5)  # dispersion index
+acf(claims5)
+pacf(claims5)
+poinar(claims5, 1)
 
 }
 \references{
