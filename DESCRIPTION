@@ -7,6 +7,8 @@ Authors@R: c(person("Marcelo", "Bourguinon", role = "aut",
                     email = "mn.neco@gmail.com"),
              person("Bruno", "Patriota", role = "ctb", email = "brunopatriotabps@gmail.com" ))
 Description: Time series analysis and count data
-Depends: R (>= 2.10.0)
+Depends:
+    R (>= 2.10.0)
 License: GNU GPL v2
 LazyData: true
+RoxygenNote: 5.0.0.9000
