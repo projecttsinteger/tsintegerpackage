@@ -19,12 +19,13 @@
 #'
 #'@examples
 #'data(claims)
-#'mean(claims[,5])
-#'var(claims[,5])
-#'var(claims[,5])/mean(claims[,5])  # dispersion index
-#'acf(claims[,5])
-#'pacf(claims[,5])
-#'poinar(claims[,5], 1)
+#'attach(claims)
+#'mean(claims5)
+#'var(claims5)
+#'var(claims5)/mean(claims5)  # dispersion index
+#'acf(claims5)
+#'pacf(claims5)
+#'poinar(claims5, 1)
 #'
 #' @export
 poinar <-
@@ -34,7 +35,7 @@ poinar <-
       series <- deparse(substitute(x))
     xfreq <- frequency(x)
     n <- length(x)
-    
+    r0 <- acf(x, plot = FALSE)$acf[1]
     r <- acf(x, plot = FALSE)$acf[2:(order.max+1)]
     R <- diag(order.max)
     for(i in 1:order.max){
@@ -58,23 +59,23 @@ poinar <-
     
     coef <- round(solve(R, r), 4)
     xbar <- mean(x)	#mean of the serie
-    mu.e <- var.error <- xbar*(1-sum(coef)) #mean and variance of the error
+    mu.e <- xbar*(1-sum(coef)) #mean and variance of the error
+    var.error <- r0 - sum(coef*r)
     mu.x <- mu.e/(1-sum(coef))
     sum.var <- sum( coef*(1-coef))
     Vp <- var.error + mu.x*sum.var
     fitted <- poinar.sim(length(x), order.max = length(coef), alpha = coef,lambda = mu.e, n.start=200)
     resid <- residuals(x,coef,order.max,mu.e)
-    r <- na.remove(resid,PACKAGE = )
-    rms <- sqrt(mean(r^2))
+    rms <- sqrt(mean(resid^2,na.rm = TRUE))
     
     AICc. <- n*log(Vp) + n*((1+order.max/n)/(1-(order.max+2)/n))
-    AIC. <-  -n*log(Vp) + 2*order.max
+    AIC. <-  n*log(Vp) + 2*order.max
     BIC. <-  n*log(Vp) + (order.max/n)*log(n)
     
     inar <- list(order = order.max,
                 coef = coef,
-                lambda= mu.e,
-                x.mean = xbar,
+                mean.e = mu.e,
+                var = var.error,
                 rms = rms,
                 fitted.values <- fitted,
                 bic= BIC.,
@@ -123,53 +124,25 @@ print.inar <-
   {
     if(!inherits(x, "inar"))
       stop("method is only for inar objects")
-    cat("\nCall:\n", deparse(x$call), "\n\n", sep = "")
-    cat("Coefficient(s):\n")
+    cat("\nCall:\n", deparse(x$call), "\n", sep = "")
+    cat("\nModel:\nINAR(",x$order.max,")\n", sep = "")
+    cat("\nResiduals:\n")
+    rq <- structure(quantile(x$resid,na.rm = TRUE),
+                    names = c("Min","1Q","Median","3Q","Max"))
+    print(rq, digits = digits, ...)
+    cat("\n Coefficient(s):\n")
     print.default(format(coef(x), digits = digits),
                   print.gap = 2, quote = FALSE)
     cat("\nFit:\n")
     cat("RMS =", format(x$rms, digits = digits),
-        ",  lambda estimated as = ", format(round(x$lambda, 2)),
-        ",  AIC = ", format(round(x$aic, 2)), "\n", sep = "")
-    cat("\n")
-    invisible(x)
-  }
-
-summary.inar <-
-  function(object, ...)
-  {
-    if(!inherits(object, "inar"))
-      stop("method is only for arma objects")
-    ans <- NULL
-    ans$residuals <- na.remove(object$resid)
-    ans$criterion <- c(object$aic,object$aicc,object$bic)
-    ans$coef <- cbind(object$coef, c(object$aic,object$aicc,object$bic)  )
-    dimnames(ans$coef) <- list(names(object$coef), c(" Estimate"," Inf. Criterion"))
-    ans$call <- object$call
-    ans$nn <- object$nn
-    ans$var <- var(ans$residuals)
-    ans$rms <- object$rms
-    ans$p <- object$order.max
-    class(ans) <- "summary.inar"
-    return(ans)
-  }
-
-print.summary.arma <-
-  function(x, digits = max(3, getOption("digits") - 3), ...)
-  {
-    if(!inherits(x, "summary.inar"))
-      stop("method is only for summary.inar objects")
-    cat("\nCall:\n", deparse(x$call), "\n", sep = "")
-    cat("\nModel:\nINAR(",x$p,")\n", sep = "")
-    cat("\nResiduals:\n")
-    rq <- structure(quantile(x$residuals),
-                    names = c("Min","1Q","Median","3Q","Max"))
-    print(rq, digits = digits, ...)
-    cat("\nCoefficient(s):\n")
-    printCoefmat(x$coef, digits = digits, ...)
-    cat("\nFit:\n")
-    cat("sigma^2 estimated as ", format(x$var, digits = digits), 
-        ",  RMS = ", format(round(x$rms, 2)) , "\n", sep = "")
+        ",  mean.error = ", format(round(x$mean.e, 2)),
+        ",  var.error = ", format(round(x$var, 2)), "\n", sep = "")
+    
+    cat("\nInformation Criterion:\n")
+    cat("AIC =", format(round(x$bic, 2)),
+        ", BIC = ", format(round(x$bic, 2)),
+        ",  AICc = ", format(round(x$aicc, 2)), "\n", sep = "")
+    
     cat("\n")
     invisible(x)
   }
