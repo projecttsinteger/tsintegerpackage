@@ -148,6 +148,14 @@ print.inar <-
   }
 
 
+summary.inar <-
+  function(object, ...)
+  {
+    if(!inherits(object, "inar"))
+      stop("method is only for arma objects")
+    return(summary(object$resid))
+  }
+
 plot.inar <-
   function(x, ask = interactive(), ...)
   {
