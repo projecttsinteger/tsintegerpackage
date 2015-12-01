@@ -46,7 +46,8 @@ poinar <-
       }
     }
     
-    residuals <- function(x,coef,p,lambda)
+
+residuals <- function(x,coef,p,lambda)
     {
       x<- x
       e <- NULL
@@ -103,6 +104,7 @@ coef.inar <-
   }
 
 
+
 residuals.inar <-
   function(object, ...)
   {
@@ -111,6 +113,7 @@ residuals.inar <-
     return(object$resid)
   }
 
+
 fitted.inar <-
   function(object, ...)
   {
@@ -118,6 +121,7 @@ fitted.inar <-
       stop("method is only for arma objects")
     return(object$fitted.values)
   }
+
 
 print.inar <-
   function(x, digits = max(3, getOption("digits") - 3), ...)
@@ -155,6 +159,7 @@ summary.inar <-
       stop("method is only for arma objects")
     return(summary(object$resid))
   }
+
 
 plot.inar <-
   function(x, ask = interactive(), ...)
