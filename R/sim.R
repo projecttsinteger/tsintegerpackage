@@ -54,6 +54,12 @@ poinar.sim <- function(n, order.max, alpha,lambda, n.start=NA){
 #'
 #'@return Resultados
 #'
+#'@references
+#'
+#'RISTIC, M. M.; BAKOUCHB, H. S.; NASTI, A. S. 
+#'A newgeometricfirst-orderinteger-valuedautoregressive (NGINAR(1)) process . 
+#'Journal of Statistical Planning and Inference 139 (2009) 2218 -- 2226
+#'
 #'@examples
 #'
 #'# A new geometric INAR simulation

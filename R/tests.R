@@ -1,3 +1,16 @@
+#' Function Test
+#'
+#' Tests
+#'
+#' @param x a numeric vector or time series.
+#'
+#'@return 
+#'
+#'@references
+#'
+#'@examples
+#'
+#' @export
 otest <- function(x, conf.level = 0.05)
   {
   alpha <- conf.level
