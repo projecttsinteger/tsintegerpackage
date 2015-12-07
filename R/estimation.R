@@ -40,8 +40,19 @@ nginar <-
         }
       }
     }
-    
-    residuals <- function(x,coef,mu)
+
+#' Function residuals
+#'
+#' Description
+#'
+#' @param x
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export            
+residuals <- function(x,coef,mu)
     {
       x<- x
       p<- 1
