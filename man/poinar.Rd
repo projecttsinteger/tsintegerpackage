@@ -12,8 +12,12 @@ poinar(x, order.max, series = NULL)
 \item{order.max}{a one dimensional integer vestor giving the order of the model to fit. This value corresponds the INAR order.}
 
 \item{series}{name for the series.}
+
+\item{x}{}
 }
 \value{
+Resultados
+
 Resultados
 }
 \description{
@@ -37,5 +41,7 @@ The integer-valued autorregressive (INAR(p)) model.
 
 Freeland RK. Statistical analysis of discrete time series with applications to the analysis of workers compensation
 claims data [unpublished doctoral dissertation]. Vancouver (Canada): University of British Columbia; 1998.
+
+
 }
 

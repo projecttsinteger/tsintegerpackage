@@ -46,9 +46,22 @@ poinar <-
       }
     }
     
-    residuals <- function(x,coef,p,lambda)
+    
+#' Function residuals
+#'
+#' Description
+#'
+#' @param x
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export    
+residuals <-
+      function(x,coef,p,lambda)
     {
-      x<- x
+        x<- x
       e <- NULL
       for(t in (p+1):length(x) )
       {
