@@ -28,4 +28,9 @@ ts.sim <- nginar.sim(n = 100, alpha = 0.4, mu = 2)
 ts.plot(ts.sim)
 
 }
+\references{
+RISTIC, M. M.; BAKOUCHB, H. S.; NASTI, A. S. 
+A newgeometricfirst-orderinteger-valuedautoregressive (NGINAR(1)) process . 
+Journal of Statistical Planning and Inference 139 (2009) 2218 -- 2226
+}
 

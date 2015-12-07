@@ -93,7 +93,17 @@ poinar <-
   }
 
 
-
+#' Function coef.inar
+#'
+#' Description
+#'
+#' @param object 
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export
 coef.inar <-
   function(object, ...)
   {
@@ -102,7 +112,17 @@ coef.inar <-
     return(object$coef)
   }
 
-
+#' Function residuals.inar
+#'
+#' Description
+#'
+#' @param object 
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export
 residuals.inar <-
   function(object, ...)
   {
@@ -111,6 +131,17 @@ residuals.inar <-
     return(object$resid)
   }
 
+#' Function fitted.inar
+#'
+#' Description
+#'
+#' @param object 
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export
 fitted.inar <-
   function(object, ...)
   {
@@ -119,6 +150,17 @@ fitted.inar <-
     return(object$fitted.values)
   }
 
+#' Function print.inar
+#'
+#' Description
+#'
+#' @param x
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export
 print.inar <-
   function(x, digits = max(3, getOption("digits") - 3), ...)
   {
@@ -147,7 +189,17 @@ print.inar <-
     invisible(x)
   }
 
-
+#' Function summary.inar
+#'
+#' Description
+#'
+#' @param object 
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export
 summary.inar <-
   function(object, ...)
   {
@@ -156,6 +208,17 @@ summary.inar <-
     return(summary(object$resid))
   }
 
+#' Function plot.inar
+#'
+#' Description
+#'
+#' @param x
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export
 plot.inar <-
   function(x, ask = interactive(), ...)
   {

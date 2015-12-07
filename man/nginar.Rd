@@ -27,4 +27,9 @@ var(sexoffences)
 nginar(sexoffences)
 
 }
+\references{
+RISTIC, M. M.; BAKOUCHB, H. S.; NASTI, A. S. 
+A newgeometricfirst-orderinteger-valuedautoregressive (NGINAR(1)) process . 
+Journal of Statistical Planning and Inference 139 (2009) 2218 -- 2226
+}
 
