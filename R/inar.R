@@ -99,7 +99,7 @@ residuals <-
 #'
 #'Description
 #'
-#'@param object 
+#'@param object An object of class "inar".
 #'
 #'@return Resultados
 #'
@@ -119,7 +119,7 @@ coef.inar <-
 #'
 #'Description
 #'
-#'@param object 
+#'@param object An object of class "inar". 
 #'
 #'@return Resultados
 #'
@@ -139,7 +139,7 @@ residuals.inar <-
 #'
 #'Description
 #'
-#'@param object 
+#'@param object An object of class "inar".
 #'
 #'@return Resultados
 #'
@@ -159,7 +159,7 @@ fitted.inar <-
 #'
 #'Description
 #'
-#'@param x
+#'@param x An object of class "inar".
 #'
 #'@return Resultados
 #'
@@ -199,7 +199,7 @@ print.inar <-
 #'
 #'Description
 #'
-#'@param object 
+#'@param object An object of class "inar". 
 #'
 #'@return Resultados
 #'
@@ -219,7 +219,7 @@ summary.inar <-
 #'
 #'Description
 #'
-#'@param x
+#'@param x An object of class "inar".
 #'
 #'@return Resultados
 #'

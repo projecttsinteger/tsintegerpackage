@@ -40,7 +40,7 @@ otest <- function(x, conf.level = 0.05)
 #'
 #' Description
 #'
-#' @param x
+#' @param x a numeric vector or time series.
 #'
 #'@return Resultados
 #'
