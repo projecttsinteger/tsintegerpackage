@@ -21,9 +21,9 @@
 #'var(sexoffences)
 #'nginar(sexoffences)
 #'
-#' @export
-nginar <-
-  function(x,series=NULL)
+#'@export
+
+nginar <- function(x,series=NULL)
   {
     if (is.null(series))
       series <- deparse(substitute(x))
@@ -41,18 +41,7 @@ nginar <-
       }
     }
 
-#' Function residuals
-#'
-#' Description
-#'
-#' @param x
-#'
-#'@return Resultados
-#'
-#'@references
-#'
-#' @export            
-residuals <- function(x,coef,mu)
+    residuals <- function(x,coef,mu)
     {
       x<- x
       p<- 1
@@ -63,7 +52,6 @@ residuals <- function(x,coef,mu)
       }
       return(e)
     }
-    
     
     coef <- round(solve(R, r), 4)
     xbar <- mean(x)

@@ -12,13 +12,9 @@ nginar(x, series = NULL)
 \item{order.max}{the integer component p is the INAR order.}
 
 \item{mu}{the mean of the geometric distribution.}
-
-\item{x}{}
 }
 \value{
 
-
-Resultados
 }
 \description{
 Fit in inar model to a univariate time series by yule-walker method
@@ -35,7 +31,5 @@ nginar(sexoffences)
 RISTIC, M. M.; BAKOUCHB, H. S.; NASTI, A. S. 
 A newgeometricfirst-orderinteger-valuedautoregressive (NGINAR(1)) process . 
 Journal of Statistical Planning and Inference 139 (2009) 2218 -- 2226
-
-
 }
 
