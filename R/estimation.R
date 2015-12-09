@@ -8,6 +8,12 @@
 #'
 #'@return
 #'
+#'@references
+#'
+#'RISTIC, M. M.; BAKOUCHB, H. S.; NASTI, A. S. 
+#'A newgeometricfirst-orderinteger-valuedautoregressive (NGINAR(1)) process . 
+#'Journal of Statistical Planning and Inference 139 (2009) 2218 -- 2226
+#'
 #'@examples
 #'
 #'data(sexoffences)
@@ -34,8 +40,19 @@ nginar <-
         }
       }
     }
-    
-    residuals <- function(x,coef,mu)
+
+#' Function residuals
+#'
+#' Description
+#'
+#' @param x
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export            
+residuals <- function(x,coef,mu)
     {
       x<- x
       p<- 1

@@ -1,3 +1,16 @@
+#' Function Test
+#'
+#' Tests
+#'
+#' @param x a numeric vector or time series.
+#'
+#'@return 
+#'
+#'@references
+#'
+#'@examples
+#'
+#' @export
 otest <- function(x, conf.level = 0.05)
   {
   alpha <- conf.level
@@ -23,6 +36,17 @@ otest <- function(x, conf.level = 0.05)
   return(ans)
 }
 
+#' Function print.otest
+#'
+#' Description
+#'
+#' @param x
+#'
+#'@return Resultados
+#'
+#'@references
+#'
+#' @export
 print.otest <- function(x, digits = max(3, getOption("digits") - 2),signif.stars = getOption("show.signif.stars"), ...)
 {
   if(!inherits(x, "otest"))
