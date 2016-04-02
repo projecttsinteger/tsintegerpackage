@@ -58,8 +58,9 @@ NULL
 #'
 #'@references
 #'
-#'Jazi, M.A, Jones, G. and Lai, C.-D. (2012). First-order integer valued AR processes with
-#'zero in ated Poisson innovations. Journal of Time Series Analysis, 33, 954-963.
+#'Jazi, M. A., Jones, G., & Lai, C.-D. (2012). First-order integer
+#'valued AR processes with zero inflated Poisson
+#'innovations. Journal of Time Series Analysis, 33, 954–963
 #'
 NULL
 

@@ -1,6 +1,6 @@
 #' Function poinar.sim
 #'
-#' Simulate from an Inar model
+#' Simulate from an Poisson INAR model
 #'
 #' @param n the length of outputs series. A strictly positive integer.
 #' @param order.max the integer component p is the INAR order.
@@ -56,9 +56,9 @@ poinar.sim <- function(n, order.max, alpha,lambda, n.start=NA){
 #'
 #'@references
 #'
-#'RISTIC, M. M.; BAKOUCHB, H. S.; NASTI, A. S. 
-#'A newgeometricfirst-orderinteger-valuedautoregressive (NGINAR(1)) process . 
-#'Journal of Statistical Planning and Inference 139 (2009) 2218 -- 2226
+#'Miroslav M Ristic, Hassan S Bakouch, Aleksandar S Nastic.
+#'A new geometric first-order integer-valued autoregressive (NGINAR (1)) process . 
+#'Journal of Statistical Planning and Inference.VOl. 139 (2009) 2218 -- 2226
 #'
 #'@examples
 #'

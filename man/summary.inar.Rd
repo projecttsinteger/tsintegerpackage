@@ -7,7 +7,7 @@
 \method{summary}{inar}(object, ...)
 }
 \arguments{
-\item{object}{}
+\item{object}{An object of class "inar".}
 }
 \value{
 Resultados

@@ -1,6 +1,6 @@
 #'Function poinar
 #'
-#'Fit in inar model to a univariate time series by yule-walker method
+#'Fit a Poisson INAR model to a univariate time series by yule-walker method
 #'
 #'@param x a numeric vector or time series.
 #'@param order.max a one dimensional integer vestor giving the order of the model to fit. This value corresponds the INAR order.
@@ -47,7 +47,7 @@ poinar <-
       }
     }
     
-residuals <-
+residual <-
       function(x,coef,p,lambda)
     {
         x<- x
@@ -127,11 +127,11 @@ coef.inar <-
 #'
 #'@export
 
-residuals.inar <-
+residual.inar <-
   function(object, ...)
   {
     if(!inherits(object, "inar"))
-      stop("method is only for arma objects")
+      stop("method is only for inar objects")
     return(object$resid)
   }
 

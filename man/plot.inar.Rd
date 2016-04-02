@@ -7,7 +7,7 @@
 \method{plot}{inar}(x, ask = interactive(), ...)
 }
 \arguments{
-\item{x}{}
+\item{x}{An object of class "inar".}
 }
 \value{
 Resultados

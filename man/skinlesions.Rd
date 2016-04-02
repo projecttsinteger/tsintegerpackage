@@ -9,7 +9,8 @@ region in New Zealand. The submissions can be categorized in various ways. Here 
 number of bovine cases, and several others categorized by presenting symptoms.
 }
 \references{
-Jazi, M.A, Jones, G. and Lai, C.-D. (2012). First-order integer valued AR processes with
-zero in ated Poisson innovations. Journal of Time Series Analysis, 33, 954-963.
+Jazi, M. A., Jones, G., & Lai, C.-D. (2012). First-order integer
+valued AR processes with zero inflated Poisson
+innovations. Journal of Time Series Analysis, 33, 954–963
 }
 

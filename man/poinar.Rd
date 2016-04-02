@@ -17,7 +17,7 @@ poinar(x, order.max, series = NULL)
 Resultados
 }
 \description{
-Fit in inar model to a univariate time series by yule-walker method
+Fit a Poisson INAR model to a univariate time series by yule-walker method
 }
 \examples{
 data(claims)

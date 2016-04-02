@@ -21,7 +21,7 @@ poinar.sim(n, order.max, alpha, lambda, n.start = NA)
 A time-series object of class "ts".
 }
 \description{
-Simulate from an Inar model
+Simulate from an Poisson INAR model
 }
 \examples{
 # A Poisson INAR simulation

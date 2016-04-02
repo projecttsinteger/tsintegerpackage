@@ -8,7 +8,7 @@
   signif.stars = getOption("show.signif.stars"), ...)
 }
 \arguments{
-\item{x}{}
+\item{x}{a numeric vector or time series.}
 }
 \value{
 Resultados

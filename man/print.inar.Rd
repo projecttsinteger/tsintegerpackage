@@ -7,7 +7,7 @@
 \method{print}{inar}(x, digits = max(3, getOption("digits") - 3), ...)
 }
 \arguments{
-\item{x}{}
+\item{x}{An object of class "inar".}
 }
 \value{
 Resultados
