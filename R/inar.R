@@ -1,109 +1,31 @@
-#'Function poinar
+#'Methods for Fitted INAR Models
 #'
-#'Fit a Poisson INAR model to a univariate time series by yule-walker method
+#'@description Methods for fitted INAR model objects.
 #'
-#'@param x a numeric vector or time series.
-#'@param order.max a one dimensional integer vestor giving the order of the model to fit. This value corresponds the INAR order.
-#'@param series name for the series.
+#'@usage 
+#'## S3 method for class 'inar'
+#'coef(object, ...)
+#'## S3 method for class 'inar'
+#' residuals(object, ...)
+#'## S3 method for class 'inar'
+#' fitted(object, ...)
+#'## S3 method for class 'inar'
+#' print(x, digits = max(3, getOption("digits") - 3), ...)
+#' ## S3 method for class 'inar'
+#' plot(x, ask = interactive(), ...)
 #'
-#'@return Resultados
+#' 
+#'@param object, x an object of class "inar"; usually, a result of a call to inar.
+#'@param digits see \code{\link{printCoefmat}}.
+#'@param ark Should the plot method work interactively? See \code{\link{interactive}}.
 #'
-#'@references
+#'@param ...
+#'further arguments passed to or from other methods.
 #'
-#'Du, J.G. and Li,Y.(1991):
-#'The integer-valued autorregressive (INAR(p)) model.
-#'\emph{Journal of time series analysis} \bold{12}, 129--142.
-#'
-#'Freeland RK. Statistical analysis of discrete time series with applications to the analysis of workers compensation
-#'claims data [unpublished doctoral dissertation]. Vancouver (Canada): University of British Columbia; 1998.
-#'
-#'@examples
-#'data(claims)
-#'claims5 <- claims[,5]
-#'mean(claims5)
-#'var(claims5)
-#'var(claims5)/mean(claims5)  # dispersion index
-#'acf(claims5)
-#'pacf(claims5)
-#'poinar(claims5, 1)
-#'
-#'@export
-
-poinar <-
-  function(x, order.max,series=NULL)
-  {
-    if (is.null(series))
-      series <- deparse(substitute(x))
-    xfreq <- frequency(x)
-    n <- length(x)
-    r0 <- acf(x, plot = FALSE)$acf[1]
-    r <- acf(x, plot = FALSE)$acf[2:(order.max+1)]
-    R <- diag(order.max)
-    for(i in 1:order.max){
-      for(j in 1:order.max){
-        if(i!=j){
-          R[i,j] <- r[abs(i-j)]
-        }
-      }
-    }
-    
-residual <-
-      function(x,coef,p,lambda)
-    {
-        x<- x
-      e <- NULL
-      for(t in (p+1):length(x) )
-      {
-        e[t] <- x[t] - ( sum(coef*x[(t-1):(t-p)]) + lambda)
-      }
-      return(e)
-    }
-    
-    coef <- round(solve(R, r), 4)
-    xbar <- mean(x)	#mean of the serie
-    mu.e <- xbar*(1-sum(coef)) #mean and variance of the error
-    var.error <- r0 - sum(coef*r)
-    mu.x <- mu.e/(1-sum(coef))
-    sum.var <- sum( coef*(1-coef))
-    Vp <- var.error + mu.x*sum.var
-    fitted <- poinar.sim(length(x), order.max = length(coef), alpha = coef,lambda = mu.e, n.start=200)
-    resid <- residuals(x,coef,order.max,mu.e)
-    rms <- sqrt(mean(resid^2,na.rm = TRUE))
-    
-    AICc. <- n*log(Vp) + n*((1+order.max/n)/(1-(order.max+2)/n))
-    AIC. <-  n*log(Vp) + 2*order.max
-    BIC. <-  n*log(Vp) + (order.max/n)*log(n)
-    
-    inar <- list(order = order.max,
-                coef = coef,
-                mean.e = mu.e,
-                var = var.error,
-                rms = rms,
-                fitted.values <- fitted,
-                bic= BIC.,
-                aicc=AICc.,
-                aic = AIC.,
-                n.used = n,
-                order.max = order.max,
-                resid = resid,
-                method = "yule-walker",
-                series = series,
-                frequency = xfreq,
-                call = match.call())
-    class(inar) <- "inar"
-    return(inar)
-  }
-
-
-#'Function coef.inar
-#'
-#'Description
-#'
-#'@param object An object of class "inar".
-#'
-#'@return Resultados
-#'
-#'@references
+#'@return
+#'For coef, a numeric vector; 
+#'for residuals and fitted a univariate time series; 
+#'for plot and print, the fitted INAR model object.
 #'
 #'@export
 
@@ -115,35 +37,72 @@ coef.inar <-
     return(object$coef)
   }
 
-#'Function residuals.inar
+#'Methods for Fitted INAR Models
 #'
-#'Description
+#'@description Methods for fitted INAR model objects.
 #'
-#'@param object An object of class "inar". 
+#'@usage 
+#'## S3 method for class 'inar'
+#'coef(object, ...)
+#'## S3 method for class 'inar'
+#' residuals(object, ...)
+#'## S3 method for class 'inar'
+#' fitted(object, ...)
+#'## S3 method for class 'inar'
+#' print(x, digits = max(3, getOption("digits") - 3), ...)
+#' ## S3 method for class 'inar'
+#' plot(x, ask = interactive(), ...)
 #'
-#'@return Resultados
+#' 
+#'@param object, x an object of class "inar"; usually, a result of a call to inar.
+#'@param digits see \code{\link{printCoefmat}}.
+#'@param ark Should the plot method work interactively? See \code{\link{interactive}}.
 #'
-#'@references
+#'@param ...
+#'further arguments passed to or from other methods.
+#'
+#'@return
+#'For coef, a numeric vector; 
+#'for residuals and fitted a univariate time series; 
+#'for plot and print, the fitted INAR model object.
 #'
 #'@export
 
-residual.inar <-
-  function(object, ...)
-  {
-    if(!inherits(object, "inar"))
-      stop("method is only for inar objects")
-    return(object$resid)
-  }
+residual.inar <- function(object, ...)
+{
+  if(!inherits(object, "inar"))
+    stop("method is only for inar objects")
+  return(object$resid)
+}
 
-#'Function fitted.inar
+#'Methods for Fitted INAR Models
 #'
-#'Description
+#'@description Methods for fitted INAR model objects.
 #'
-#'@param object An object of class "inar".
+#'@usage 
+#'## S3 method for class 'inar'
+#'coef(object, ...)
+#'## S3 method for class 'inar'
+#' residuals(object, ...)
+#'## S3 method for class 'inar'
+#' fitted(object, ...)
+#'## S3 method for class 'inar'
+#' print(x, digits = max(3, getOption("digits") - 3), ...)
+#' ## S3 method for class 'inar'
+#' plot(x, ask = interactive(), ...)
 #'
-#'@return Resultados
+#' 
+#'@param object, x an object of class "inar"; usually, a result of a call to inar.
+#'@param digits see \code{\link{printCoefmat}}.
+#'@param ark Should the plot method work interactively? See \code{\link{interactive}}.
 #'
-#'@references
+#'@param ...
+#'further arguments passed to or from other methods.
+#'
+#'@return
+#'For coef, a numeric vector; 
+#'for residuals and fitted a univariate time series; 
+#'for plot and print, the fitted INAR model object.
 #'
 #'@export
 
@@ -155,15 +114,34 @@ fitted.inar <-
     return(object$fitted.values)
   }
 
-#'Function print.inar
+#'Methods for Fitted INAR Models
 #'
-#'Description
+#'@description Methods for fitted INAR model objects.
 #'
-#'@param x An object of class "inar".
+#'@usage 
+#'## S3 method for class 'inar'
+#'coef(object, ...)
+#'## S3 method for class 'inar'
+#' residuals(object, ...)
+#'## S3 method for class 'inar'
+#' fitted(object, ...)
+#'## S3 method for class 'inar'
+#' print(x, digits = max(3, getOption("digits") - 3), ...)
+#' ## S3 method for class 'inar'
+#' plot(x, ask = interactive(), ...)
 #'
-#'@return Resultados
+#' 
+#'@param object, x an object of class "inar"; usually, a result of a call to inar.
+#'@param digits see \code{\link{printCoefmat}}.
+#'@param ark Should the plot method work interactively? See \code{\link{interactive}}.
 #'
-#'@references
+#'@param ...
+#'further arguments passed to or from other methods.
+#'
+#'@return
+#'For coef, a numeric vector; 
+#'for residuals and fitted a univariate time series; 
+#'for plot and print, the fitted INAR model object.
 #'
 #'@export
 
@@ -186,24 +164,43 @@ print.inar <-
         ",  mean.error = ", format(round(x$mean.e, 2)),
         ",  var.error = ", format(round(x$var, 2)), "\n", sep = "")
     
-    cat("\nInformation Criterion:\n")
-    cat("AIC =", format(round(x$bic, 2)),
-        ", BIC = ", format(round(x$bic, 2)),
-        ",  AICc = ", format(round(x$aicc, 2)), "\n", sep = "")
+    # cat("\nInformation Criterion:\n")
+    #  cat("AIC =", format(round(x$bic, 2)),
+    #      ", BIC = ", format(round(x$bic, 2)),
+    #     ",  AICc = ", format(round(x$aicc, 2)), "\n", sep = "")
     
     cat("\n")
     invisible(x)
   }
 
-#'Function summary.inar
+#'Methods for Fitted INAR Models
 #'
-#'Description
+#'@description Methods for fitted INAR model objects.
 #'
-#'@param object An object of class "inar". 
+#'@usage 
+#'## S3 method for class 'inar'
+#'coef(object, ...)
+#'## S3 method for class 'inar'
+#' residuals(object, ...)
+#'## S3 method for class 'inar'
+#' fitted(object, ...)
+#'## S3 method for class 'inar'
+#' print(x, digits = max(3, getOption("digits") - 3), ...)
+#' ## S3 method for class 'inar'
+#' plot(x, ask = interactive(), ...)
 #'
-#'@return Resultados
+#' 
+#'@param object, x an object of class "inar"; usually, a result of a call to inar.
+#'@param digits see \code{\link{printCoefmat}}.
+#'@param ark Should the plot method work interactively? See \code{\link{interactive}}.
 #'
-#'@references
+#'@param ...
+#'further arguments passed to or from other methods.
+#'
+#'@return
+#'For coef, a numeric vector; 
+#'for residuals and fitted a univariate time series; 
+#'for plot and print, the fitted INAR model object.
 #'
 #'@export
 
@@ -215,15 +212,34 @@ summary.inar <-
     return(summary(object$resid))
   }
 
-#'Function plot.inar
+#'Methods for Fitted INAR Models
 #'
-#'Description
+#'@description Methods for fitted INAR model objects.
 #'
-#'@param x An object of class "inar".
+#'@usage 
+#'## S3 method for class 'inar'
+#'coef(object, ...)
+#'## S3 method for class 'inar'
+#' residuals(object, ...)
+#'## S3 method for class 'inar'
+#' fitted(object, ...)
+#'## S3 method for class 'inar'
+#' print(x, digits = max(3, getOption("digits") - 3), ...)
+#' ## S3 method for class 'inar'
+#' plot(x, ask = interactive(), ...)
 #'
-#'@return Resultados
+#' 
+#'@param object, x an object of class "inar"; usually, a result of a call to inar.
+#'@param digits see \code{\link{printCoefmat}}.
+#'@param ark Should the plot method work interactively? See \code{\link{interactive}}.
 #'
-#'@references
+#'@param ...
+#'further arguments passed to or from other methods.
+#'
+#'@return
+#'For coef, a numeric vector; 
+#'for residuals and fitted a univariate time series; 
+#'for plot and print, the fitted INAR model object.
 #'
 #'@export
 

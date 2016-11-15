@@ -1,6 +1,6 @@
 #' Function poinar.sim
 #'
-#' Simulate from an Poisson INAR model
+#' Simulate from an INAR model
 #'
 #' @param n the length of outputs series. A strictly positive integer.
 #' @param order.max the integer component p is the INAR order.
@@ -14,9 +14,9 @@
 #'@seealso   \code{\link{poinar}}
 #'
 #'@references
-#'  Du, J.G. and Li,Y.(1991):
+#'  Du, J.G. and Li,Y. (1991).
 #'  The integer-valued autorregressive (INAR(p)) model.
-#'  \emph{Journal of time series analysis} \bold{12}, 129--142.
+#'  \emph{Journal of time series analysis}. \bold{12}, 129--142.
 #'
 #'@examples
 #'# A Poisson INAR simulation
@@ -24,6 +24,7 @@
 #'ts.plot(ts.sim)
 #'
 #' @export
+#' 
 poinar.sim <- function(n, order.max, alpha,lambda, n.start=NA){
   length. <- n + n.start
   x <- rep(NA, times = length.)
@@ -52,13 +53,15 @@ poinar.sim <- function(n, order.max, alpha,lambda, n.start=NA){
 #' @param mu a vector.
 #' @param n.start the length of 'burn-in' period. If na, the default, a reasonable valve is computed.
 #'
-#'@return Resultados
+#'@return A time-series object of class "ts".
+#'
+#'@seealso   \code{\link{nginar}}
 #'
 #'@references
 #'
-#'Miroslav M Ristic, Hassan S Bakouch, Aleksandar S Nastic.
-#'A new geometric first-order integer-valued autoregressive (NGINAR (1)) process . 
-#'Journal of Statistical Planning and Inference.VOl. 139 (2009) 2218 -- 2226
+#'Ristic, M.M., Bakouchb, H.S. and Nasti, A.S. (2009) 
+#'A newgeometricfirst-orderinteger-valuedautoregressive (NGINAR(1)) process . 
+#'\emph{Journal of Statistical Planning and Inference}, \bold{139}, 2218--2226.
 #'
 #'@examples
 #'
@@ -67,6 +70,7 @@ poinar.sim <- function(n, order.max, alpha,lambda, n.start=NA){
 #'ts.plot(ts.sim)
 #'
 #' @export
+#' 
 nginar.sim <- function(n, alpha,mu, n.start=150){
   length. <- n + n.start
   error.nginar <- function(length.,alpha,mu){

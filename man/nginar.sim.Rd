@@ -16,7 +16,7 @@ nginar.sim(n, alpha, mu, n.start = 150)
 \item{n.start}{the length of 'burn-in' period. If na, the default, a reasonable valve is computed.}
 }
 \value{
-Resultados
+A time-series object of class "ts".
 }
 \description{
 Simulate from an Inar model
@@ -29,8 +29,11 @@ ts.plot(ts.sim)
 
 }
 \references{
-Miroslav M Ristic, Hassan S Bakouch, Aleksandar S Nastic.
-A new geometric first-order integer-valued autoregressive (NGINAR (1)) process . 
-Journal of Statistical Planning and Inference.VOl. 139 (2009) 2218 -- 2226
+Ristic, M.M., Bakouchb, H.S. and Nasti, A.S. (2009) 
+A newgeometricfirst-orderinteger-valuedautoregressive (NGINAR(1)) process . 
+\emph{Journal of Statistical Planning and Inference}, \bold{139}, 2218--2226.
+}
+\seealso{
+\code{\link{nginar}}
 }
 

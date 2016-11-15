@@ -14,7 +14,7 @@
 otest <- function(x, conf.level = 0.05)
   {
   alpha <- conf.level
-  data< x
+  data <- x
   DNAME <- deparse(substitute(data))
   ans <- NULL
   METHOD <- "Test for overdispersion"

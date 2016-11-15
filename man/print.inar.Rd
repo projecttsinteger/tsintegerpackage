@@ -2,20 +2,34 @@
 % Please edit documentation in R/inar.R
 \name{print.inar}
 \alias{print.inar}
-\title{Function print.inar}
+\title{Methods for Fitted INAR Models}
 \usage{
-\method{print}{inar}(x, digits = max(3, getOption("digits") - 3), ...)
+## S3 method for class 'inar'
+coef(object, ...)
+## S3 method for class 'inar'
+residuals(object, ...)
+## S3 method for class 'inar'
+fitted(object, ...)
+## S3 method for class 'inar'
+print(x, digits = max(3, getOption("digits") - 3), ...)
+## S3 method for class 'inar'
+plot(x, ask = interactive(), ...)
 }
 \arguments{
-\item{x}{An object of class "inar".}
+\item{digits}{see \code{\link{printCoefmat}}.}
+
+\item{...}{further arguments passed to or from other methods.}
+
+\item{object, }{x an object of class "inar"; usually, a result of a call to inar.}
+
+\item{ark}{Should the plot method work interactively? See \code{\link{interactive}}.}
 }
 \value{
-Resultados
+For coef, a numeric vector; 
+for residuals and fitted a univariate time series; 
+for plot and print, the fitted INAR model object.
 }
 \description{
-Description
-}
-\references{
-
+Methods for fitted INAR model objects.
 }
 

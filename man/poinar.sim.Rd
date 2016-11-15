@@ -21,7 +21,7 @@ poinar.sim(n, order.max, alpha, lambda, n.start = NA)
 A time-series object of class "ts".
 }
 \description{
-Simulate from an Poisson INAR model
+Simulate from an INAR model
 }
 \examples{
 # A Poisson INAR simulation
@@ -30,9 +30,9 @@ ts.plot(ts.sim)
 
 }
 \references{
-Du, J.G. and Li,Y.(1991):
+Du, J.G. and Li,Y. (1991).
  The integer-valued autorregressive (INAR(p)) model.
- \emph{Journal of time series analysis} \bold{12}, 129--142.
+ \emph{Journal of time series analysis}. \bold{12}, 129--142.
 }
 \seealso{
 \code{\link{poinar}}

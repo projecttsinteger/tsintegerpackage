@@ -9,12 +9,19 @@ nginar(x, series = NULL)
 \arguments{
 \item{x}{a numeric vector or time series.}
 
-\item{order.max}{the integer component p is the INAR order.}
+\item{order.max}{the integer component p is the NGINAR order.}
 
 \item{mu}{the mean of the geometric distribution.}
 }
 \value{
+A list of class "inar" with the following elements:
 
+\describe{
+\item{coef:}{estimated NGINAR coefficients for the fitted model.}
+\item{residual:}{the series of residuals.}
+\item{fitted.values:}{the fitted series.}
+\item{series:}{the name of the series x.}
+}
 }
 \description{
 Fit in inar model to a univariate time series by yule-walker method
@@ -28,8 +35,8 @@ nginar(sexoffences)
 
 }
 \references{
-Miroslav M Ristic, Hassan S Bakouch, Aleksandar S Nastic.
-A new geometric first-order integer-valued autoregressive (NGINAR (1)) process . 
-Journal of Statistical Planning and Inference.VOl. 139 (2009) 2218 -- 2226
+Ristic, M.M., Bakouchb, H.S. and Nasti, A.S. (2009) 
+A newgeometricfirst-orderinteger-valuedautoregressive (NGINAR(1)) process . 
+\emph{Journal of Statistical Planning and Inference}, \bold{139}, 2218--2226.
 }
 
