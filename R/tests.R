@@ -2,20 +2,19 @@
 #'
 #' Tests
 #'
-#' @param x a numeric vector or time series.
+#'@param x a numeric vector or time series.
 #'
-#'@return 
+#'@return x 
 #'
-#'@references
+#'@references x
 #'
-#'@examples
+#'@examples x
 #'
 #' @export
 otest <- function(x, conf.level = 0.05)
   {
+  DNAME <- deparse(substitute(x))
   alpha <- conf.level
-  data <- x
-  DNAME <- deparse(substitute(data))
   ans <- NULL
   METHOD <- "Test for overdispersion"
   n         <- length(x)
@@ -37,17 +36,7 @@ otest <- function(x, conf.level = 0.05)
   return(ans)
 }
 
-#' Function print.otest
-#'
-#' Description
-#'
-#' @param x a numeric vector or time series.
-#'
-#'@return Resultados
-#'
-#'@references
-#'
-#' @export
+
 print.otest <- function(x, digits = max(3, getOption("digits") - 2),signif.stars = getOption("show.signif.stars"), ...)
 {
   if(!inherits(x, "otest"))

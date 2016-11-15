@@ -10,15 +10,16 @@ otest(x, conf.level = 0.05)
 \item{x}{a numeric vector or time series.}
 }
 \value{
-
+x
 }
 \description{
 Tests
 }
 \examples{
+x
 
 }
 \references{
-
+x
 }
 
