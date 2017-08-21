@@ -2,9 +2,9 @@
 % Please edit documentation in R/estimation.R
 \name{poinar}
 \alias{poinar}
-\title{Function poinar}
+\title{Function expoinar}
 \usage{
-poinar(x, order.max,series=NULL)
+expoinar(x, order.max,series=NULL,family="gen.poisson")
 }
 \arguments{
 \item{x}{a numeric vector or time series.}
@@ -12,8 +12,23 @@ poinar(x, order.max,series=NULL)
 \item{order.max}{a one dimensional integer vestor giving the order of the model to fit. This value corresponds the INAR order.}
 
 \item{series}{name for the series.}
+
+\item{x}{a numeric vector or time series.}
+
+\item{order.max}{a one dimensional integer vestor giving the order of the model to fit. This value corresponds the INAR order.}
+
+\item{series}{name for the series.}
 }
 \value{
+A list of class "inar" with the following elements:
+
+\describe{
+\item{coef:}{estimated INAR coefficients for the fitted model.}
+\item{residual:}{the series of residuals.}
+\item{fitted.values:}{the fitted series.}
+\item{series:}{the name of the series x.}
+}
+
 A list of class "inar" with the following elements:
 
 \describe{
@@ -38,6 +53,14 @@ poinar(claims5, 1)
 
 }
 \references{
+Du, J.G. and Li,Y. (1991).
+The integer-valued autorregressive (INAR(p)) model.
+\emph{Journal of time series analysis}. \bold{12}, 129--142.
+
+Freeland R. K. (1998). 
+\emph{Statistical analysis of discrete time series with applications to the analysis of workers compensation
+claims data [unpublished doctoral dissertation]}. Vancouver (Canada): University of British Columbia.
+
 Du, J.G. and Li,Y. (1991).
 The integer-valued autorregressive (INAR(p)) model.
 \emph{Journal of time series analysis}. \bold{12}, 129--142.

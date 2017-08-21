@@ -1,3 +1,48 @@
+#'Function expoinar
+#'
+#'Fit in inar model to a univariate time series by yule-walker method
+#'
+#'@usage
+#'expoinar(x, order.max,series=NULL,family="gen.poisson")
+#'
+#'@param x a numeric vector or time series.
+#'@param order.max a one dimensional integer vestor giving the order of the model to fit. This value corresponds the INAR order.
+#'@param series name for the series.
+#'
+#'@return
+#'A list of class "inar" with the following elements:
+#'
+#'\describe{
+#'\item{coef:}{estimated INAR coefficients for the fitted model.}
+#'\item{residual:}{the series of residuals.}
+#'\item{fitted.values:}{the fitted series.}
+#'\item{series:}{the name of the series x.}
+#'}
+#'@references
+#'
+#'Du, J.G. and Li,Y. (1991).
+#'The integer-valued autorregressive (INAR(p)) model.
+#'\emph{Journal of time series analysis}. \bold{12}, 129--142.
+#'
+#'Freeland R. K. (1998). 
+#'\emph{Statistical analysis of discrete time series with applications to the analysis of workers compensation
+#'claims data [unpublished doctoral dissertation]}. Vancouver (Canada): University of British Columbia.
+#'
+#'@examples
+#'data(claims)
+#'claims5 <- claims[,5]
+#'mean(claims5)
+#'var(claims5)
+#'var(claims5)/mean(claims5)  # dispersion index
+#'acf(claims5)
+#'pacf(claims5)
+#'poinar(claims5, 1)
+#'
+#'@export
+#'
+#'
+
+
 #'Function poinar
 #'
 #'Fit in inar model to a univariate time series by yule-walker method
